@@ -1,21 +1,22 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--<link rel="stylesheet" href="css/index.css">-->
 		<title>Tetris Beta</title>
 		<style>
-			html,body{background-image:url("images/bg-tetris.png");background-repeat:repeat-x;margin:0;padding:0;height:100%}#container{min-height:100%;position:relative}header{padding:10px}#content{height:400px;left:50%;margin-left:-450px;margin-top:-125px;position:absolute;top:50%;width:900px;padding:10px;padding-bottom:60px}#content_help{height:400px;left:50%;margin-left:-450px;margin-top:-243px;position:absolute;top:50%;width:900px;padding:10px;padding-bottom:60px}#single,#keyboard{float:left}#keyboard{margin-left:25px}#versus{float:right}#play{margin-left:250px}footer{position:absolute;bottom:0;width:99%;height:60px;text-align:right}
+			html{height:100%}body{background-image:url("images/bg-tetris.png");background-repeat:repeat-x;font-family:Calibri,Helvetica,Arial,sans-serif;height:100%;margin:0}.flex-container{height:100%;padding:0;margin:0;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;align-items:center;justify-content:center}.flex-item{padding:20px}#container{min-height:100%;position:relative}header{padding:10px}#content{height:400px;left:50%;margin-left:-450px;margin-top:-125px;position:absolute;top:50%;width:900px;padding:10px;padding-bottom:60px}#content_help{height:400px;left:50%;margin-left:-450px;margin-top:-243px;position:absolute;top:50%;width:900px;padding:10px;padding-bottom:60px}#single,#keyboard{float:left}#keyboard{margin-left:25px}#versus{float:right}#play{margin-left:250px}footer{position:absolute;bottom:0;width:99%;text-align:center}
 		</style>
 	</head>
 	<body>
-		<div id="container">
-			<div id="content">
-				<a href="single_help.html" id="single"><img src="images/single_player.png" alt="Single player" /></a>
-				<a href="" id="versus"><img src="images/versus_development.png" alt="Versus" /></a>
-			</div>
-			<footer>
-				<p>by Jonathan Castro</p>
-			</footer>
+		<div class="flex-container">
+			<div class="flex-item"><a href="single_help.html" id="single"><img src="images/single_player.png" alt="Single player" /></a></div>
+			<div class="flex-item"><a href="" id="versus"><img src="images/versus_development.png" alt="Versus" /></a></div>
 		</div>
+		<footer>
+			<p>A Jonathan Castro project</p>
+			<a href="https://twitter.com/0xJCG"><img src="images/twitter_logo.png" alt="Twitter logo for link the author's account" /></a>
+		</footer>
 	</body>
 </html>
