@@ -549,7 +549,7 @@ Tetris.prototype.animate_shape = function(timestamp) {
 };
 
 Tetris.prototype.show_next_shape = function() {
-	document.getElementById("shape").src = "images/" + this.next_shape.getName() + ".png";
+	document.getElementById("shape").src = "images/" + this.next_shape.getName().substring(0, 7) + ".png";
 };
 
 Tetris.prototype.show_level = function() {

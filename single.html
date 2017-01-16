@@ -1,9 +1,11 @@
 <!doctype html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Tetris Beta</title>
-		<link rel="stylesheet" href="css/tetris.css">
-		<script src="js/tetris.js"></script>
+		<style>
+			html,body{background-image:url("images/bg-tetris.png");background-repeat:repeat-x;margin:0;padding:0;height:100%}#container{min-height:100%;position:relative}header{padding:10px}#content{height:602px;left:50%;margin-left:-242px;margin-top:-301px;position:absolute;top:50%;width:484px}#canvas{border:1px solid #000000;float:left}#images{margin:0 auto;position:absolute}#pause{margin:0 auto;position:absolute}#mute,#sound{margin:1px 259px auto;position:absolute}#data{background-color:#FFFFFF;border-bottom:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;height:250px;margin:0 302px auto;position:absolute;width:180px}#data p{margin-left:20px}#shape{display:block;margin:0 auto}footer{position:absolute;bottom:0;width:99%;height:60px;text-align:right}
+		</style>
 	</head>
 	<body>
 		<div id="container">
@@ -40,82 +42,9 @@
 		<footer>
 			<p>by Jonathan Castro</p>
 		</footer>
+		<script src="js/tetris-min.js"></script>
 		<script>
-	// ===== main ====
-	// canvas related variables
-	var canvas = document.getElementById("canvas");
-	var ctx = canvas.getContext("2d");
-	
-	// get if there is a record stored
-	var record = localStorage.getItem("tetris_record")
-	if (record)
-		document.getElementById('record').innerHTML = record;
-	else
-		document.getElementById('record').innerHTML = 0;
-	
-	var background_audio;
-	var levelup_audio;
-	var rotate_audio;
-	var gameover_audio;
-	var linekill_audio;
-	var falldown_audio;
-	var pause_audio;
-	var game;
-	
-	document.getElementById('mute').setAttribute('style','display: none');
-	document.getElementById('pause').setAttribute('style','display: none');
-
-	var loading_background = new Image();
-	loading_background.src = 'images/loading.png';
-	loading_background.onload = function(){
-		ctx.drawImage(loading_background, 0, 0);
-		load_music();
-	};
-	
-	function load_music() {
-		background_audio = new Audio("sounds/tetris.mp3");
-		background_audio.loop = true;
-		background_audio.load();
-		background_audio.volume = 0.2;
-		
-		levelup_audio = new Audio("sounds/levelup.mp3");
-		levelup_audio.load();
-		levelup_audio.volume = 0.7;
-		
-		rotate_audio = new Audio("sounds/rotate.mp3");
-		rotate_audio.load();
-		rotate_audio.volume = 0.7;
-		
-		gameover_audio = new Audio("sounds/gameover.mp3");
-		gameover_audio.load();
-		gameover_audio.volume = 0.5;
-		
-		linekill_audio = new Audio("sounds/linekill.mp3");
-		linekill_audio.load();
-		linekill_audio.volume = 0.7;
-		
-		falldown_audio = new Audio("sounds/falldown.mp3");
-		falldown_audio.load();
-		falldown_audio.volume = 0.7;
-		
-		pause_audio = new Audio("sounds/pause.mp3");
-		pause_audio.load();
-		pause_audio.volume = 0.7;
-		
-		background_audio.addEventListener("canplaythrough", is_music_ready());
-	}
-	
-	function is_music_ready() {
-		background_audio.play();
-		clear_canvas();
-	}
-	
-	function clear_canvas() {
-		ctx.fillStyle = 'white';
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		game = new Tetris();
-		game.init();
-	}
+	function load_music(){background_audio=new Audio("sounds/tetris.mp3"),background_audio.loop=!0,background_audio.load(),background_audio.volume=.2,levelup_audio=new Audio("sounds/levelup.mp3"),levelup_audio.load(),levelup_audio.volume=.7,rotate_audio=new Audio("sounds/rotate.mp3"),rotate_audio.load(),rotate_audio.volume=.7,gameover_audio=new Audio("sounds/gameover.mp3"),gameover_audio.load(),gameover_audio.volume=.5,linekill_audio=new Audio("sounds/linekill.mp3"),linekill_audio.load(),linekill_audio.volume=.7,falldown_audio=new Audio("sounds/falldown.mp3"),falldown_audio.load(),falldown_audio.volume=.7,pause_audio=new Audio("sounds/pause.mp3"),pause_audio.load(),pause_audio.volume=.7,background_audio.addEventListener("canplaythrough",is_music_ready())}function is_music_ready(){background_audio.play(),clear_canvas()}function clear_canvas(){ctx.fillStyle="white",ctx.fillRect(0,0,canvas.width,canvas.height),game=new Tetris,game.init()}var canvas=document.getElementById("canvas"),ctx=canvas.getContext("2d"),record=localStorage.getItem("tetris_record");record?document.getElementById("record").innerHTML=record:document.getElementById("record").innerHTML=0;var background_audio,levelup_audio,rotate_audio,gameover_audio,linekill_audio,falldown_audio,pause_audio,game;document.getElementById("mute").setAttribute("style","display: none"),document.getElementById("pause").setAttribute("style","display: none");var loading_background=new Image;loading_background.src="images/loading.png",loading_background.onload=function(){ctx.drawImage(loading_background,0,0),load_music()};
 		</script>
 	</body>
 </html>
