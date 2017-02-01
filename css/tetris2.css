@@ -1,0 +1,95 @@
+html {
+	height: 100%;
+}
+
+body {
+	background-image: url("../images/bg-tetris.png");
+    background-repeat: repeat-x;
+	font-family:Calibri,Helvetica,Arial,sans-serif;
+	height: 100%;
+	margin: 0;
+}
+
+#container {
+   min-height: 100%;
+   position: relative;
+}
+
+header {
+	padding: 10px;
+}
+
+#content {
+	left: 50%;
+	margin-left: -514px;
+	margin-top: -301px;
+	position: absolute; 
+	top: 50%;
+	width: 1028px;
+}
+
+#canvas1 {
+	border: 1px solid #000000;
+	float: left;
+}
+
+#canvas2 {
+	border: 1px solid #000000;
+	float: left;
+	margin-left: 20px;
+}
+
+#images1 {
+	position: absolute;
+	width: 300px;
+}
+
+#images2 {
+	margin-left: 220px;
+	position: absolute;
+	width: 302px;
+}
+
+#pause1 {
+	position: absolute;
+}
+
+#pause2 {
+	margin-left: 304px;
+	position: absolute;
+}
+
+#mute1, #sound1 {
+	margin-left: 259px;
+}
+
+#mute2, #sound2 {
+	margin-left: 562px;
+	position: absolute;
+}
+
+#data1, #data2 {
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-top: 1px solid #000000;
+	float: left;
+	height: 250px;
+	width: 200px;
+}
+
+#data1 p, #data2 p {
+	margin-left: 20px;
+}
+
+#shape1, #shape2 {
+	display: block;
+	margin: 0 auto;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 99%;
+	text-align: center;
+}

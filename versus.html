@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tetris</title>
+		<link rel="stylesheet" href="css/tetris2.css">
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<a href="index.html"><img src="images/back.png" alt="Return to main page" /></a>
+			</header>
+			<div id="content">
+				<canvas id="canvas1" width="300" height="600"></canvas>
+				<div id="images1">
+					<img id="pause1" src="images/pause.png" alt="Pause" />
+					<img id="mute1" src="images/no_sound.png" alt="Mute" />
+					<img id="sound1" src="images/sound.png" alt="Sound" />
+				</div>
+				<div id="data1">
+					<p>
+						Score:
+						<span id="score1">0</span>
+					</p>
+					<p>
+						Record:
+						<span id="record1">0</span>
+					</p>
+					<p>
+						Level:
+						<span id="level1">1</span>
+					</p>
+					<p>
+						Next shape:
+					</p>
+					<img src="" alt="" id="shape1" />
+				</div>
+				<canvas id="canvas2" width="300" height="600"></canvas>
+				<div id="images2">
+					<img id="pause2" src="images/pause.png" alt="Pause" />
+					<img id="mute2" src="images/no_sound.png" alt="Mute" />
+					<img id="sound2" src="images/sound.png" alt="Sound" />
+				</div>
+				<div id="data2">
+					<p>
+						Score:
+						<span id="score2">0</span>
+					</p>
+					<p>
+						Record:
+						<span id="record2">0</span>
+					</p>
+					<p>
+						Level:
+						<span id="level2">1</span>
+					</p>
+					<p>
+						Next shape:
+					</p>
+					<img src="" alt="" id="shape2" />
+				</div>
+			</div>
+		</div>
+		<footer>
+			<p>A Jonathan Castro project</p>
+			<a href="https://twitter.com/0xJCG"><img src="images/twitter_logo.png" alt="Twitter logo for link the author's account" /></a>
+		</footer>
+		<script src="js/tetrisVersusP1.js"></script>
+		<script src="js/tetrisVersusP2.js"></script>
+		<script>
+	// ===== main ====
+	// canvas related variables
+	var canvas1 = document.getElementById("canvas1");
+	var canvas2 = document.getElementById("canvas2");
+	var ctx1 = canvas1.getContext("2d");
+	var ctx2 = canvas2.getContext("2d");
+	
+	// get if there is a record stored
+	var record = localStorage.getItem("tetris_record")
+	if (record) {
+		document.getElementById('record1').innerHTML = record;
+		document.getElementById('record2').innerHTML = record;
+	} else {
+		document.getElementById('record1').innerHTML = 0;
+		document.getElementById('record2').innerHTML = 0;
+	}
+	
+	var background_audio;
+	var levelup_audio;
+	var rotate_audio;
+	var gameover_audio;
+	var linekill_audio;
+	var falldown_audio;
+	var pause_audio;
+	var game1;
+	var game2;
+	
+	document.getElementById('mute1').setAttribute('style','display: none');
+	document.getElementById('pause1').setAttribute('style','display: none');
+	document.getElementById('mute2').setAttribute('style','display: none');
+	document.getElementById('pause2').setAttribute('style','display: none');
+	
+	var loading_background = new Image();
+	loading_background.src = 'images/loading.png';
+	loading_background.onload = function(){
+		ctx1.drawImage(loading_background, 0, 0);
+		ctx2.drawImage(loading_background, 0, 0);
+		load_music();
+	};
+	
+	function load_music() {
+		background_audio = new Audio("sounds/tetris.mp3");
+		background_audio.loop = true;
+		background_audio.load();
+		background_audio.volume = 0.2;
+		
+		levelup_audio = new Audio("sounds/levelup.mp3");
+		levelup_audio.load();
+		levelup_audio.volume = 0.7;
+		
+		rotate_audio = new Audio("sounds/rotate.mp3");
+		rotate_audio.load();
+		rotate_audio.volume = 0.7;
+		
+		gameover_audio = new Audio("sounds/gameover.mp3");
+		gameover_audio.load();
+		gameover_audio.volume = 0.5;
+		
+		linekill_audio = new Audio("sounds/linekill.mp3");
+		linekill_audio.load();
+		linekill_audio.volume = 0.7;
+		
+		falldown_audio = new Audio("sounds/falldown.mp3");
+		falldown_audio.load();
+		falldown_audio.volume = 0.7;
+		
+		pause_audio = new Audio("sounds/pause.mp3");
+		pause_audio.load();
+		pause_audio.volume = 0.7;
+		
+		background_audio.addEventListener("canplaythrough", is_music_ready());
+	}
+	
+	function is_music_ready() {
+		background_audio.play();
+		clear_canvas();
+	}
+	
+	function clear_canvas() {
+		ctx1.fillStyle = 'white';
+		ctx2.fillStyle = 'white';
+		ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
+		ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
+		game1 = new Tetris();
+		game2 = new Tetris2();
+		game1.init();
+		game2.init();
+	}
+		</script>
+	</body>
+</html>
